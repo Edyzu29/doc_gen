@@ -38,11 +38,12 @@ Espacio_red = Espacio.add_run("")
 
 # Agregar fecha y hora de la carta
 fecha_hora_parrafo = doc.add_paragraph()
-fecha_hora = fecha_hora_parrafo.add_run(f'{fecha_departamento.departamento}, {fecha_departamento.fecha} \n\r')
+fecha_hora = fecha_hora_parrafo.add_run(f'{fecha_departamento.departamento}, {fecha_departamento.fecha}\n')
 
 # titulo de la carta
 titulo_parrafo = doc.add_paragraph()
-titulo = titulo_parrafo.add_run(f'CARTA N° {emisor.n_carta}-{emisor.ano}-{emisor.iniciales.upper()}')
+nombre_carta = f"{emisor.n_carta}-{emisor.ano}-{emisor.iniciales.upper()}"
+titulo = titulo_parrafo.add_run(f'CARTA N° {nombre_carta}')
 titulo.font.bold = True
 titulo.font.underline = True
 
@@ -72,25 +73,33 @@ texto_subdireccion = parrafo.add_run(": -")
 
 parrafo = doc.add_paragraph()
 texto_asunto = parrafo.add_run("Asunto")
-texto_presente.underline = True     # Subrayado para "Atención"
+texto_asunto.underline = True     # Subrayado para "Atención"
+
+texto_subdireccion = parrafo.add_run(f": Presentación del {emisor.entregable} entregable en el marco")
 
 if "N°" in emisor.Adenda:
-    texto_contrato = f"{emisor.entregable} entregable en el marco de la Adenda {emisor.Adenda} del Contrato {emisor.contrato}"
+    conexion =" de la "
+    texto_contrato = f"Adenda {emisor.Adenda} del Contrato {emisor.contrato}"
 
 else:
+    conexion =" del "
+    texto_contrato = f"Contrato {emisor.contrato}"
 
-    texto_contrato = f"{emisor.entregable} entregable en el marco del Contrato {emisor.contrato}"
 
-
-texto_subdireccion = parrafo.add_run(f": Presentación del {texto_contrato}")
+conex_parrafo = parrafo.add_run(f"{conexion}")
+contrato_parrafo = parrafo.add_run(f"{texto_contrato}.")
+contrato_parrafo.font.bold = True
 parrafo.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY 
 
 parrafo = doc.add_paragraph()
 cuerpo_text = parrafo.add_run("De mi consideración:")
 
 parrafo = doc.add_paragraph()
-cuerpo2_text = parrafo.add_run(f"Me dirijo a usted, para expresarle mi cordial saludo, y a la vez adjuntar el {texto_contrato},")
-cuerpo3_text = parrafo.add_run(f"de acuerdo con el Detalle de Actividades solicitado por la Subdirección Técnica Científica de la Dirección de Evaluación Ambiental.")
+cuerpo2_text = parrafo.add_run(f"Me dirijo a usted, para expresarle mi cordial saludo, y a la vez adjuntar el {emisor.entregable} entregable en el marco")
+conex_parrafo = parrafo.add_run(f"{conexion}")
+contrato_parrafo = parrafo.add_run(f"{texto_contrato}")
+contrato_parrafo.font.bold = True
+cuerpo3_text = parrafo.add_run(f", de acuerdo con el Detalle de Actividades solicitado por la Subdirección Técnica Científica de la Dirección de Evaluación Ambiental.")
 parrafo.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY 
 
 parrafo = doc.add_paragraph()
@@ -108,4 +117,4 @@ cuerpo9_text = parrafo.add_run("\n\rSe Adjunta:")
 cuerpo10_text = parrafo.add_run("\n\t-\tInforme de Actividades y Anexos")
 
 # Guardar el documento
-doc.save("dodoc.docx")
+doc.save(f"Carta {nombre_carta}.docx")

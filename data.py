@@ -39,7 +39,7 @@ class emisor:
     dni = "72746974"
     contrato = "N° 00141-2024-OEFA/OAD-UAB"
     Adenda = "N° 0002"
-    n_carta = "022"
+    n_carta = "012"
     ano = datetime.now().strftime("%Y")
     iniciales = ''.join([palabra[0] for palabra in nombre.split()])
     entregable = fechas_entregables[fecha]
