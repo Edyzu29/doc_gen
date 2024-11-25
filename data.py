@@ -1,6 +1,7 @@
 # Si quieres hacer colocar un Enter (salto de linea) entre cualquier frase, solo coloca "\n\r" 
 from datetime import datetime
 import locale
+from docx.shared import Cm
 
 Nombre_Ano = 'Decenio de la Igualdad de Oportunidades para Mujeres y Hombres \n“Año del Bicentenario, de la consolidación de nuestra Independencia, y de la conmemoración de las heroicas batallas de Junín y Ayacucho”'
 
@@ -12,13 +13,21 @@ fechas_entregables = {
 
 fecha = min(fechas_entregables, key=lambda x: abs(datetime.strptime(x, "%d/%m/%y") - datetime.now()))
 
-class Margenes:
+class Margenes_Carta:
     superior = 1.10
     inferior = 0.50
     derecho = 2.50
     izquierdo = 2.80
 
-Margenes = Margenes()
+Margenes_Carta = Margenes_Carta()
+
+class Margenes_Informe:
+    superior = 3.5
+    inferior = 2.25
+    derecho = 1.80
+    izquierdo = 2.10
+
+Margenes_Informe = Margenes_Informe()
 
 class fecha_departamento:
     locale.setlocale(locale.LC_TIME, 'es')  # Para sistemas Windows
@@ -45,3 +54,13 @@ class emisor:
     entregable = fechas_entregables[fecha]
 
 emisor = emisor()
+
+class tabla_cabecera:
+    celda1_ancho= 4
+    celda2_ancho= 8.7
+    celda3_ancho= 4
+    celda_alto = 3
+    
+    
+    texto_mapro= "MAPRO-OAD-PA-0240"
+    texto_version= "Versión: 03\nFecha: 15/11/2021"

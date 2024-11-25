@@ -7,10 +7,10 @@ from data import *
 doc = Document()
 
 section = doc.sections[0]
-section.left_margin = Cm(Margenes_Informe.izquierdo)    # Margen izquierdo
-section.right_margin = Cm(Margenes_Informe.derecho)   # Margen derecho
-section.top_margin = Cm(Margenes_Informe.superior)     # Margen superior
-section.bottom_margin = Cm(Margenes_Informe.inferior)  # Margen inferior
+section.left_margin = Cm(Margenes_Carta.izquierdo)    # Margen izquierdo
+section.right_margin = Cm(Margenes_Carta.derecho)   # Margen derecho
+section.top_margin = Cm(Margenes_Carta.superior)     # Margen superior
+section.bottom_margin = Cm(Margenes_Carta.inferior)  # Margen inferior
 
 # Agregar un encabezado
 section = doc.sections[0]
