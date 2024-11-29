@@ -49,9 +49,9 @@ titulo.font.underline = True
 
 # Emisor
 parrafo = doc.add_paragraph()
-genero_receptor = parrafo.add_run(f'{receptor.genero}:\n')
+genero_receptor = parrafo.add_run(f'{receptor.director_genero}:\n')
 
-persona_receptor = parrafo.add_run(f'{receptor.director.upper()}\n')
+persona_receptor = parrafo.add_run(f'{receptor.director_deam.upper()}\n')
 persona_receptor.font.bold = True
 
 direccion_receprtor = parrafo.add_run(f'{receptor.direccion}\n')
@@ -77,17 +77,10 @@ texto_asunto.underline = True     # Subrayado para "Atención"
 
 texto_subdireccion = parrafo.add_run(f": Presentación del {emisor.entregable} entregable en el marco")
 
-if "N°" in emisor.Adenda:
-    conexion =" de la "
-    texto_contrato = f"Adenda {emisor.Adenda} del Contrato {emisor.contrato}"
-
-else:
-    conexion =" del "
-    texto_contrato = f"Contrato {emisor.contrato}"
 
 
-conex_parrafo = parrafo.add_run(f"{conexion}")
-contrato_parrafo = parrafo.add_run(f"{texto_contrato}.")
+conex_parrafo = parrafo.add_run(f"{Contrato_Adenda()[0]}")
+contrato_parrafo = parrafo.add_run(f"{Contrato_Adenda()[1]}.")
 contrato_parrafo.font.bold = True
 parrafo.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY 
 
@@ -96,8 +89,8 @@ cuerpo_text = parrafo.add_run("De mi consideración:")
 
 parrafo = doc.add_paragraph()
 cuerpo2_text = parrafo.add_run(f"Me dirijo a usted, para expresarle mi cordial saludo, y a la vez adjuntar el {emisor.entregable} entregable en el marco")
-conex_parrafo = parrafo.add_run(f"{conexion}")
-contrato_parrafo = parrafo.add_run(f"{texto_contrato}")
+conex_parrafo = parrafo.add_run(f"{Contrato_Adenda()[0]}")
+contrato_parrafo = parrafo.add_run(f"{Contrato_Adenda()[1]}")
 contrato_parrafo.font.bold = True
 cuerpo3_text = parrafo.add_run(f", de acuerdo con el Detalle de Actividades solicitado por la Subdirección Técnica Científica de la Dirección de Evaluación Ambiental.")
 parrafo.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY 

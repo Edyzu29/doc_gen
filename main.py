@@ -49,9 +49,9 @@ titulo.font.underline = True
 
 # Emisor
 parrafo = doc.add_paragraph()
-genero_receptor = parrafo.add_run(f'{receptor.genero}:\n')
+genero_receptor = parrafo.add_run(f'{receptor.director_genero}:\n')
 
-persona_receptor = parrafo.add_run(f'{receptor.director.upper()}\n')
+persona_receptor = parrafo.add_run(f'{receptor.director_deam.upper()}\n')
 persona_receptor.font.bold = True
 
 direccion_receprtor = parrafo.add_run(f'{receptor.direccion}\n')

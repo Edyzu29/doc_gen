@@ -51,5 +51,55 @@ parrafo_3.alignment = WD_ALIGN_PARAGRAPH.LEFT
 run = parrafo_3.add_run(tabla_cabecera.texto_version)
 run.font.size = Pt(9)
 
+
+# Configurar el estilo global del documento
+estilo = doc.styles['Normal']
+fuente = estilo.font
+fuente.name = 'Arial'  # Tipo de letra
+fuente.size = Pt(10)   # Tamaño de letra
+
+titulo_parrafo = doc.add_paragraph()
+titulo = titulo_parrafo.add_run('INFORME DE ACTIVIDADES')
+titulo_parrafo.alignment = WD_ALIGN_PARAGRAPH.CENTER
+titulo.font.bold = True
+
+enca1 = doc.add_paragraph()
+enca1_valor = enca1.add_run('\tA')
+enca1_valor.font.bold = True
+enca1_valor = enca1.add_run('\t\t\t:\t')
+enca1_valor = enca1.add_run(receptor.director_tercero)
+
+enca2 = doc.add_paragraph()
+enca2_valor = enca2.add_run('\tDE')
+enca2_valor.font.bold = True
+enca2_valor = enca2.add_run('\t\t\t:\t')
+enca2_valor = enca2.add_run(emisor.nombre)
+
+enca3 = doc.add_paragraph()
+enca3_valor = enca3.add_run('\tNÚMERO DE')
+enca3_valor.font.bold = True
+enca3_valor = enca3.add_run('\t\t:\t')
+enca3_valor = enca3.add_run(Contrato_Adenda()[1])
+enca3_valor = enca3.add_run('\n\tCONTRATO')
+enca3_valor.font.bold = True
+
+enca4 = doc.add_paragraph()
+enca4_valor = enca4.add_run('\tPERIODO DE')
+enca4_valor.font.bold = True
+enca4_valor = enca4.add_run('\t\t:\t')
+enca4_valor = enca4.add_run(f'Del {datetime.strftime(emisor.inicio_contrato,"%d de %B")} al {datetime.strftime(fechas_entregables.keys()[-1],"%d de %B de %Y")}')
+enca4_valor = enca4.add_run('\n\tCONTRATACIÓN')
+enca4_valor.font.bold = True
+
+enca5 = doc.add_paragraph()
+enca5_valor = enca5.add_run('\tPERIODO EN EL')
+enca5_valor.font.bold = True
+enca5_valor = enca5.add_run('\n\tQUE SE OTROGA')
+enca5_valor.font.bold = True
+enca5_valor = enca5.add_run('\t\t:\t')
+enca4_valor = enca4.add_run(f'Del {datetime.strftime(emisor.inicio_contrato,"%d de %B")} al {datetime.strftime(fechas_entregables.keys()[-1],"%d de %B de %Y")}')
+enca4_valor = enca4.add_run('\n\tLA CONFORMIDAD')
+enca4_valor.font.bold = True
+
 # Guardar el documento
 doc.save("documento_con_tabla.docx")
