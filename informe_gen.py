@@ -99,7 +99,8 @@ enca5_valor.font.bold = True
 enca5_valor = enca5.add_run('\n\tQUE SE OTROGA')
 enca5_valor.font.bold = True
 enca5_valor = enca5.add_run('\t:\t')
-enca5_valor = enca5.add_run(f'Del {datetime.strftime(datetime.strptime(emisor.inicio_contrato, "%d/%m/%y"),"%d de %B")} al {datetime.strftime(datetime.strptime(aucnoc[-1], "%d/%m/%y"),"%d de %B de %Y")}')
+enca5_valor = enca5.add_run(f'Del {datetime.strftime(datetime.strptime(fecha_posterior,"%d/%m/%y"),"%d de %B")} al {datetime.strftime(datetime.strptime(entregable_actual,"%d/%m/%y"),"%d de %B de %Y")}')
+enca5_valor.font.bold = True
 enca5_valor = enca5.add_run('\n\tLA CONFORMIDAD')
 enca5_valor.font.bold = True
 

@@ -1,5 +1,5 @@
 # Si quieres hacer colocar un Enter (salto de linea) entre cualquier frase, solo coloca "\n\r" 
-from datetime import datetime
+from datetime import datetime, timedelta
 import locale
 
 Nombre_Ano = 'Decenio de la Igualdad de Oportunidades para Mujeres y Hombres \n“Año del Bicentenario, de la consolidación de nuestra Independencia, y de la conmemoración de las heroicas batallas de Junín y Ayacucho”'
@@ -10,7 +10,14 @@ fechas_entregables = {
     "15/11/24" : "Tercer",
     "15/12/24" : "Cuarto"}
 
-fecha = min(fechas_entregables, key=lambda x: abs(datetime.strptime(x, "%d/%m/%y") - datetime.now()))
+entregable_actual = min(fechas_entregables, key=lambda x: abs(datetime.strptime(x, "%d/%m/%y") - datetime.now()))
+
+lista_fechas = list(fechas_entregables.keys())
+
+entregable_previo = lista_fechas.index(entregable_actual) - 1
+fecha_posterior = datetime.strptime(lista_fechas[entregable_previo], '%d/%m/%y') + timedelta(days=1)
+fecha_posterior = fecha_posterior.strftime('%d/%m/%y')
+
 
 
 class Margenes_Carta:
@@ -54,7 +61,7 @@ class emisor:
     inicio_contrato = "15/08/24"
     ano = datetime.now().strftime("%Y")
     iniciales = ''.join([palabra[0] for palabra in nombre.split()])
-    entregable = fechas_entregables[fecha]
+    entregable = fechas_entregables[entregable_actual]
 
 emisor = emisor()
 
