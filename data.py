@@ -12,6 +12,7 @@ fechas_entregables = {
 
 fecha = min(fechas_entregables, key=lambda x: abs(datetime.strptime(x, "%d/%m/%y") - datetime.now()))
 
+
 class Margenes_Carta:
     superior = 1.10
     inferior = 0.50

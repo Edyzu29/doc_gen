@@ -83,11 +83,13 @@ enca3_valor = enca3.add_run(Contrato_Adenda()[1])
 enca3_valor = enca3.add_run('\n\tCONTRATO')
 enca3_valor.font.bold = True
 
+aucnoc = list(fechas_entregables.keys())
+
 enca4 = doc.add_paragraph()
 enca4_valor = enca4.add_run('\tPERIODO DE')
 enca4_valor.font.bold = True
 enca4_valor = enca4.add_run('\t\t:\t')
-enca4_valor = enca4.add_run(f'Del {datetime.strftime(emisor.inicio_contrato,"%d de %B")} al {datetime.strftime(fechas_entregables.keys()[-1],"%d de %B de %Y")}')
+enca4_valor = enca4.add_run(f'Del {datetime.strftime(datetime.strptime(emisor.inicio_contrato,"%d/%m/%y"),"%d de %B")} al {datetime.strftime(datetime.strptime(aucnoc[-1], "%d/%m/%y"),"%d de %B de %Y")}')
 enca4_valor = enca4.add_run('\n\tCONTRATACIÓN')
 enca4_valor.font.bold = True
 
@@ -96,10 +98,10 @@ enca5_valor = enca5.add_run('\tPERIODO EN EL')
 enca5_valor.font.bold = True
 enca5_valor = enca5.add_run('\n\tQUE SE OTROGA')
 enca5_valor.font.bold = True
-enca5_valor = enca5.add_run('\t\t:\t')
-enca4_valor = enca4.add_run(f'Del {datetime.strftime(emisor.inicio_contrato,"%d de %B")} al {datetime.strftime(fechas_entregables.keys()[-1],"%d de %B de %Y")}')
-enca4_valor = enca4.add_run('\n\tLA CONFORMIDAD')
-enca4_valor.font.bold = True
+enca5_valor = enca5.add_run('\t:\t')
+enca5_valor = enca5.add_run(f'Del {datetime.strftime(datetime.strptime(emisor.inicio_contrato, "%d/%m/%y"),"%d de %B")} al {datetime.strftime(datetime.strptime(aucnoc[-1], "%d/%m/%y"),"%d de %B de %Y")}')
+enca5_valor = enca5.add_run('\n\tLA CONFORMIDAD')
+enca5_valor.font.bold = True
 
 # Guardar el documento
 doc.save("documento_con_tabla.docx")
