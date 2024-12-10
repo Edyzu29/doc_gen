@@ -49,6 +49,10 @@ Sustentos = {
     3 : {
         "Producto":   "Elaboración de los reportes de verificación del muestreado continuo de partículas GRIMM de las estaciones CA-HU-01 Nievería, CA-HU-04 El paraíso y CA-HU-09 Santa María de Huachipa, instalados en el marco de la evaluación ambiental de seguimiento, ámbito del centro poblado menor Santa María de Huachipa, El Paraíso y Nievería, distrito Lurigancho, provincia y departamento de Lima, el 18 y 19 septiembre de 2024.",
         "Evidencia":   "Se adjunta los reportes de verificación realizados en versión digital, sobre las acciones de evaluación a cargo de la Subdirección Técnica Científica; el cual se encuentra en el archivo adjunto."
+    },
+    4 : {
+        "Producto":   "-	No se realizó actividad en este Ítem.",
+        "Evidencia":   ""
     }
 }
 

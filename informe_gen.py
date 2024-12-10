@@ -179,29 +179,29 @@ enca8 = doc.add_paragraph()
 enca8_valor = enca8.add_run(f'\t{Romano[i]}{sub_i}  {Orden[orden_llave[i]][0]}')
 enca8_valor.font.bold = True
 
-enca9 = doc.add_paragraph()
-enca9.paragraph_format.left_indent = Cm(2)
-enca9_valor = enca9.add_run(f'{Actividades["Primera_Actividad"]}')
-enca9_valor.font.bold = True
-enca9.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+Prim_Act = doc.add_paragraph()
+Prim_Act.paragraph_format.left_indent = Cm(2)
+Prim_Act_valor = Prim_Act.add_run(f'{Actividades["Primera_Actividad"]}')
+Prim_Act_valor.font.bold = True
+Prim_Act.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
 
-enca9 = doc.add_paragraph()
-enca9.paragraph_format.left_indent = Cm(2)
-enca9_valor = enca9.add_run(f'{Actividades["Segunda_Actividad"]}')
-enca9_valor.font.bold = True
-enca9.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+Seg_Act = doc.add_paragraph()
+Seg_Act.paragraph_format.left_indent = Cm(2)
+Seg_Act_valor = Seg_Act.add_run(f'{Actividades["Segunda_Actividad"]}')
+Seg_Act_valor.font.bold = True
+Seg_Act.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
 
-enca9 = doc.add_paragraph()
-enca9.paragraph_format.left_indent = Cm(2)
-enca9_valor = enca9.add_run(f'{Actividades["Tercera_Actividad"]}')
-enca9_valor.font.bold = True
-enca9.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+Ter_Act = doc.add_paragraph()
+Ter_Act.paragraph_format.left_indent = Cm(2)
+Ter_Act_valor = Ter_Act.add_run(f'{Actividades["Tercera_Actividad"]}')
+Ter_Act_valor.font.bold = True
+Ter_Act.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
 
-enca9 = doc.add_paragraph()
-enca9.paragraph_format.left_indent = Cm(2)
-enca9_valor = enca9.add_run(f'{Actividades["Cuarta_Actividad"]}')
-enca9_valor.font.bold = True
-enca9.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+Cua_Act = doc.add_paragraph()
+Cua_Act.paragraph_format.left_indent = Cm(2)
+Cua_Act_valor = Cua_Act.add_run(f'{Actividades["Cuarta_Actividad"]}')
+Cua_Act_valor.font.bold = True
+Cua_Act.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
 
 #Parrafo 3
 i = 1
@@ -286,6 +286,15 @@ cuerpo7_text = parrafo.add_run(f"\n{emisor.nombre}")
 cuerpo7_text = parrafo.add_run(f"\n{emisor.cargo}")
 cuerpo8_text = parrafo.add_run(f"\nDNI: {emisor.dni}")
 
+# Actividades-
+n_sustentos  = iter(Sustentos.keys())
+
+presentacion_sustento = next(n_sustentos)
+Prim_Act_valor = Prim_Act.add_run(f'\n\r{presentacion_sustento}.  {Sustentos[presentacion_sustento]["Producto"]}\n\r')
+Prim_Act_valor_evi = Prim_Act.add_run(f'Evidencia N° {presentacion_sustento}:\n\r')
+Prim_Act_valor_evi.font.bold = True
+Prim_Act_valor_evi_1 = Prim_Act.add_run(f'{Sustentos[presentacion_sustento]["Evidencia"]}\n\r')
+Prim_Act.paragraph_format.left_indent = Cm(2.2) 
 
 # Guardar el documento
 doc.save("documento_con_tabla.docx")
