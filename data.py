@@ -58,6 +58,7 @@ class emisor:
     contrato = "N° 00141-2024-OEFA/OAD-UAB"
     Adenda = "N° 0002"
     n_carta = "012"
+    cargo = "Tercero Evaluador"
     inicio_contrato = "15/08/24"
     ano = datetime.now().strftime("%Y")
     iniciales = ''.join([palabra[0] for palabra in nombre.split()])

@@ -1,12 +1,15 @@
 from datetime import datetime
 import locale
 
-class Actividades :
-    Primera_Actividad = "Realizar acciones de monitoreo y evaluación ambiental en áreas de influencia de las actividades económicas fiscalizables de competencia del OEFA."
-    Segunda_Actividad = "Apoyo en la elaboración de documentos técnicos y/o sistematizar información de los monitoreos de calidad del aire en el marco de las evaluaciones ambientales a cargo de la STEC."
-    Tercera_Actividad = "Apoyo en el mantenimiento preventivo (verificaciones intermedias, control operativo de los analizadores, monitores ambientales, estaciones meteorológicas; y de sus calibraciones en campo) de las estaciones de vigilancia ambiental de la calidad del aire."
-    Cuarta_Actividad = "Elaborar requerimientos logísticos (planes de trabajo), presentaciones (Ppts, cartillas informativas y ayudas memorias), entre otros en el marco de las evaluaciones ambientales."
-    
+Romano = ["I.","II.","III.","IV."]
+
+Actividades = {
+    "Primera_Actividad" : "a) Realizar acciones de monitoreo y evaluación ambiental en áreas de influencia de las actividades económicas fiscalizables de competencia del OEFA.",
+    "Segunda_Actividad" : "b) Apoyo en la elaboración de documentos técnicos y/o sistematizar información de los monitoreos de calidad del aire en el marco de las evaluaciones ambientales a cargo de la STEC.",
+    "Tercera_Actividad" : "c) Apoyo en el mantenimiento preventivo (verificaciones intermedias, control operativo de los analizadores, monitores ambientales, estaciones meteorológicas; y de sus calibraciones en campo) de las estaciones de vigilancia ambiental de la calidad del aire.",
+    "Cuarta_Actividad" : "d) Elaborar requerimientos logísticos (planes de trabajo), presentaciones (Ppts, cartillas informativas y ayudas memorias), entre otros en el marco de las evaluaciones ambientales."
+}
+        
 Orden = {
     "RESUMEN EJECUTIVO" : [
         "Durante el periodo contratado, se realizaron actividades de campo y gabinete para el mantenimiento orientados a la ejecución de evaluaciones ambientales de causalidad por encargo de la Subdirección Técnica Científica de la Dirección de Evaluación Ambiental, tales como: ",
@@ -24,12 +27,14 @@ Orden = {
     "ANEXOS" : [
         """Se adjuntan los siguientes anexos:
         
-        Anexo 1: Documentos administrativos
-        Anexo 2: Carpeta que contiene los archivos digitales de los documentos de sustento descritos en el apartado II.4
+Anexo 1: Documentos administrativos
+Anexo 2: Carpeta que contiene los archivos digitales de los documentos de sustento descritos en el apartado II.4
         
-        Atentamente"""
+Atentamente"""
     ]
 }
+
+orden_llave = list(Orden.keys())
 
 Sustentos = {
     1 : {
@@ -53,5 +58,3 @@ Rellenos = [
     "Se ha elaborado satisfactoriamente los siguientes productos:",
     "Tales documentos fueron realizados según las exigencias de calidad requeridas por el área usuaria, que se refleja en que dichos documentos fueron remitidos dentro de los plazos establecidos, y que pueden ser verificados en los Anexos 1 y 2 que contienen el sustento de cada uno de los productos señalados."
 ]
-    
-    

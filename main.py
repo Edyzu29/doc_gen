@@ -116,5 +116,6 @@ cuerpo8_text = parrafo.add_run(f"\nDNI:{emisor.dni}")
 cuerpo9_text = parrafo.add_run("\n\rSe Adjunta:")
 cuerpo10_text = parrafo.add_run("\n\t-\tInforme de Actividades y Anexos")
 
+
 # Guardar el documento
 doc.save(f"Carta {nombre_carta}.docx")

@@ -1,9 +1,12 @@
 from docx import Document
-from docx.shared import Pt, Cm, Inches
+from docx.shared import Pt, Cm
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
+from docx.oxml import parse_xml
+from docx.oxml.ns import nsdecls
 from data import *
+from detalle_data import *
 
 # Crear el documento
 doc = Document()
@@ -103,6 +106,186 @@ enca5_valor = enca5.add_run(f'Del {datetime.strftime(datetime.strptime(fecha_pos
 enca5_valor.font.bold = True
 enca5_valor = enca5.add_run('\n\tLA CONFORMIDAD')
 enca5_valor.font.bold = True
+
+enca6 = doc.add_paragraph()
+enca6_valor = enca6.add_run('\tENTREGABLE')
+enca6_valor.font.bold = True
+enca6_valor = enca6.add_run('\t\t:\t')
+enca6_valor = enca6.add_run(f'{emisor.entregable} entregable')
+
+enca7 = doc.add_paragraph()
+enca7_valor = enca7.add_run('\tFECHA')
+enca7_valor.font.bold = True
+enca7_valor = enca7.add_run('\t\t\t:\t')
+enca7_valor = enca7.add_run(f'{datetime.now().strftime("%d/%m/%Y")}')
+
+
+# Agregar un párrafo con un borde inferior que actúe como línea
+p = enca7._element
+p_pr = p.get_or_add_pPr()  # Obtener o crear propiedades del párrafo
+p_borders = parse_xml(
+    r"""
+    <w:pBdr %s>
+        <w:bottom w:val="single" w:sz="12" w:space="0" w:color="000000"/>
+    </w:pBdr>
+    """ % nsdecls('w')
+)
+p_pr.append(p_borders)
+
+linea_largo = 1.25
+
+# Ajustar las sangrías del párrafo para reducir el largo de la línea
+enca7.paragraph_format.left_indent = Cm(linea_largo)  # Sangría izquierda de 3 cm
+enca7.paragraph_format.right_indent = Cm(linea_largo)  # Sangría derecha de 3 cm
+
+#Parrafo 1
+i = 0
+enca8 = doc.add_paragraph()
+enca8_valor = enca8.add_run(f'\t{Romano[i]}   {orden_llave[i]}')
+enca8_valor.font.bold = True
+
+enca8 = doc.add_paragraph()
+enca8_valor = enca8.add_run(f'{Orden[orden_llave[i]][0]}')
+enca8.paragraph_format.left_indent = Cm(1.75) 
+enca8.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+enca9 = doc.add_paragraph()
+
+actividades = list(Actividades.values())
+
+for index, actividad in enumerate(actividades):
+
+    
+    if index < (len(actividades) - 1):
+        enca9_valor = enca9.add_run(f'{actividad}\n\r')
+    else:
+        enca9_valor = enca9.add_run(f'{actividad}')
+    enca9.paragraph_format.left_indent = Cm(2)
+
+enca8 = doc.add_paragraph()  
+enca8_valor = enca8.add_run(f'{Orden[orden_llave[i]][1]}')
+enca8.paragraph_format.left_indent = Cm(1.75)
+enca8.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+#Parrafo 2
+
+i = 1
+sub_i = 1
+enca8 = doc.add_paragraph()
+enca8_valor = enca8.add_run(f'\t{Romano[i]}   {orden_llave[i]}')
+enca8_valor.font.bold = True
+
+enca8 = doc.add_paragraph()
+enca8_valor = enca8.add_run(f'\t{Romano[i]}{sub_i}  {Orden[orden_llave[i]][0]}')
+enca8_valor.font.bold = True
+
+enca9 = doc.add_paragraph()
+enca9.paragraph_format.left_indent = Cm(2)
+enca9_valor = enca9.add_run(f'{Actividades["Primera_Actividad"]}')
+enca9_valor.font.bold = True
+enca9.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+enca9 = doc.add_paragraph()
+enca9.paragraph_format.left_indent = Cm(2)
+enca9_valor = enca9.add_run(f'{Actividades["Segunda_Actividad"]}')
+enca9_valor.font.bold = True
+enca9.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+enca9 = doc.add_paragraph()
+enca9.paragraph_format.left_indent = Cm(2)
+enca9_valor = enca9.add_run(f'{Actividades["Tercera_Actividad"]}')
+enca9_valor.font.bold = True
+enca9.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+enca9 = doc.add_paragraph()
+enca9.paragraph_format.left_indent = Cm(2)
+enca9_valor = enca9.add_run(f'{Actividades["Cuarta_Actividad"]}')
+enca9_valor.font.bold = True
+enca9.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+#Parrafo 3
+i = 1
+sub_i = 2
+enca8 = doc.add_paragraph()
+enca8_valor = enca8.add_run(f'\t{Romano[i]}{sub_i}  {Orden[orden_llave[i]][0]}')
+enca8_valor.font.bold = True
+enca8.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+enca8 = doc.add_paragraph()
+enca8.paragraph_format.left_indent = Cm(2)
+enca8_valor = enca8.add_run(f'{Rellenos[sub_i-2]}')
+enca8.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+
+#Parrafo 4
+
+i = 1
+sub_i = 3
+enca8 = doc.add_paragraph()
+enca8_valor = enca8.add_run(f'\t{Romano[i]}{sub_i}  {Orden[orden_llave[i]][0]}')
+enca8_valor.font.bold = True
+enca8.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+enca8 = doc.add_paragraph()
+enca8.paragraph_format.left_indent = Cm(2)
+enca8_valor = enca8.add_run(f'{Rellenos[sub_i-2]}')
+enca8.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+
+#Parrafo 5
+
+i = 1
+sub_i = 4
+enca8 = doc.add_paragraph()
+enca8_valor = enca8.add_run(f'\t{Romano[i]}{sub_i}  {Orden[orden_llave[i]][0]}')
+enca8_valor.font.bold = True
+enca8.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+enca8 = doc.add_paragraph()
+enca8.paragraph_format.left_indent = Cm(2)
+enca8_valor = enca8.add_run(f'{Rellenos[sub_i-2]}')
+enca8.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+
+
+enca8 = doc.add_paragraph()
+enca8.paragraph_format.left_indent = Cm(2)
+enca8_valor = enca8.add_run(f'{Rellenos[sub_i-1]}')
+enca8.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+
+#Parrafo 5
+i = 2
+enca8 = doc.add_paragraph()
+enca8_valor = enca8.add_run(f'\t{Romano[i]}   {orden_llave[i]}')
+enca8_valor.font.bold = True
+enca8.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+enca8 = doc.add_paragraph()
+enca8_valor = enca8.add_run(f'{Orden[orden_llave[i]][0]}')
+enca8.paragraph_format.left_indent = Cm(2) 
+enca8.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+
+#Parrafo 6
+i = 3
+enca8 = doc.add_paragraph()
+enca8_valor = enca8.add_run(f'\t{Romano[i]}   {orden_llave[i]}')
+enca8_valor.font.bold = True
+
+
+enca8 = doc.add_paragraph()
+enca8.paragraph_format.left_indent = Cm(2) 
+enca8_valor = enca8.add_run(f'{Orden[orden_llave[i]][0]}')
+
+parrafo = doc.add_paragraph()
+parrafo.paragraph_format.left_indent = Cm(2) 
+cuerpo5_text = parrafo.add_run("\n\r\n\r\n\r\n\r\n\r\n\r")
+cuerpo6_text = parrafo.add_run("………………………………………………")
+cuerpo7_text = parrafo.add_run(f"\n{emisor.nombre}")
+cuerpo7_text = parrafo.add_run(f"\n{emisor.cargo}")
+cuerpo8_text = parrafo.add_run(f"\nDNI: {emisor.dni}")
+
 
 # Guardar el documento
 doc.save("documento_con_tabla.docx")
